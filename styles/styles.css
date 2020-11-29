@@ -2,4 +2,130 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+
+.wrapper {
+  max-width: 1060px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 50px;
+  padding-top: 105px;
+}
+
+.header__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header__add-btn {
+  background-color: #242486;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  padding: 0 18px;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.header__add-btn:hover {
+  background-color: #0f0f0f;
+}
+
+.textbox__title {
+  color: #0f0f0f;
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.textbox__subtitle {
+  color: #242486;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.main__wrapper {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-grid-columns: 250px 250px 250px;
+      grid-template-columns: 250px 250px 250px;
+  row-gap: 50px;
+}
+
+.card {
+  border: 2px solid #242486;
+  border-radius: 7px;
+  height: 250px;
+  width: 250px;
+  position: relative;
+}
+
+.card__header {
+  background-color: #242486;
+  color: #fff;
+  padding: 15px 15px;
+}
+
+.card__book-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.card__book-author {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.card__checkbox {
+  margin-top: 7px;
+}
+
+.card__pages {
+  color: #242486;
+  font-size: 1.4rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.card__delete-btn {
+  color: #242486;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.2rem;
+}
+
+.checkbox__input {
+  margin-right: 5px;
+}
 /*# sourceMappingURL=styles.css.map */

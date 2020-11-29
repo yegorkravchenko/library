@@ -1,4 +1,128 @@
+$main-color: #242486;
+$dark-color: #0f0f0f;
+$notactive-color: #757575;
+
 * {
     margin: 0;
     padding: 0;
+}
+
+:root {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+.wrapper {
+    max-width: 1060px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 50px;
+    padding-top: 105px;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__add-btn {
+        background-color: $main-color;
+        border: 0;
+        border-radius: 7px;
+        color: #fff;
+
+        padding: 0 18px;
+        cursor: pointer;
+        outline: none;
+
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+
+        &:hover {
+            background-color: $dark-color;
+        }
+    }
+}
+
+.textbox {
+    &__title {
+        color: $dark-color;
+        font-size: 2.4rem;
+        font-weight: 800;
+    }
+
+    &__subtitle {
+        color: $main-color;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}
+
+.main {
+    &__wrapper {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 250px 250px 250px;
+        row-gap: 50px;
+    }
+}
+
+.card {
+    border: 2px solid $main-color;
+    border-radius: 7px;
+    height: 250px;
+    width: 250px;
+    position: relative;
+
+    &__header {
+        background-color: $main-color;
+        color: #fff;
+        padding: 15px 15px;
+    }
+
+    &__book-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    &__book-author {
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    &__checkbox {
+        margin-top: 7px;
+    }
+
+    &__pages {
+        color: $main-color;
+        font-size: 1.4rem;
+        font-weight: 500;
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+    }
+
+    &__delete-btn {
+        color: $main-color;
+        cursor: pointer;
+        font-size: 1.6rem;
+        font-weight: 500;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+
+    &__input {
+        margin-right: 5px;
+    }
 }
