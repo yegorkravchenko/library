@@ -5,9 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header__wrapper wrapper">
+            <div class="header__textbox textbox">
+                <h1 class="textbox__title">Library</h1>
+                <h2 class="textbox__subtitle">Keep track of your books!</h2>
+            </div>
+            <button class="header__add-btn">Add book +</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="main__wrapper wrapper">
+            <div class="card">
+                <div class="card__header">
+                    <h2 class="card__book-title">A Long Way Down</h2>
+                    <h3 class="card__book-author">Nick Hornby</h3>
+                    <label class="card__checkbox checkbox"><input type="checkbox" class="checkbox__input"> Read</label>
+                </div>
+                <p class="card__pages">347 pages</p>
+                <p class="card__delete-btn">x</p>
+            </div>
+        </div>
+    </main>
+
     <script src="./app.js"></script>
 </body>
 </html>
