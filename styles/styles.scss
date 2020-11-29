@@ -71,14 +71,14 @@ $notactive-color: #757575;
 }
 
 .card {
-    border: 2px solid $main-color;
+    border: 2px solid $notactive-color;
     border-radius: 7px;
     height: 250px;
     width: 250px;
     position: relative;
 
     &__header {
-        background-color: $main-color;
+        background-color: $notactive-color;
         color: #fff;
         padding: 15px 15px;
     }
@@ -98,7 +98,7 @@ $notactive-color: #757575;
     }
 
     &__pages {
-        color: $main-color;
+        color: $notactive-color;
         font-size: 1.4rem;
         font-weight: 500;
         position: absolute;
@@ -107,7 +107,7 @@ $notactive-color: #757575;
     }
 
     &__delete-btn {
-        color: $main-color;
+        color: $notactive-color;
         cursor: pointer;
         font-size: 1.6rem;
         font-weight: 500;
