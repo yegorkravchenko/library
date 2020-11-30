@@ -1,6 +1,7 @@
 $main-color: #242486;
 $dark-color: #0f0f0f;
 $notactive-color: #757575;
+$fonts: 'Inter', Arial, Helvetica, sans-serif;
 
 * {
     margin: 0;
@@ -8,7 +9,7 @@ $notactive-color: #757575;
 }
 
 :root {
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-family: $fonts;
     font-size: 10px;
 }
 
@@ -37,12 +38,72 @@ $notactive-color: #757575;
         cursor: pointer;
         outline: none;
 
-        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-family: $fonts;
         font-size: 1.4rem;
         font-weight: 700;
 
         &:hover {
             background-color: $dark-color;
+        }
+    }
+
+    &__form-wrapper {
+        background-color: $main-color;
+        width: 100vw;
+        display: none;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    &__add-form {
+        padding: 25px 0;
+        max-width: 200px;
+        width: 90%;
+    }
+}
+
+.add-form {
+    &__label,
+    &__input {
+        display: block;
+    }
+
+    &__label {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    &__input {
+        border: 0;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: $dark-color;
+        width: 100%;
+        margin-top: 5px;
+        padding: 5px 5px;
+        outline: none;
+
+        font-family: $fonts;
+        font-size: 1.4rem;
+    }
+
+    &__btn {
+        background-color: $main-color;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        color: #fff;
+        display: block;
+        margin: 20px auto 0 auto;
+        padding: .5rem 1rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fff;
+            color: $main-color;
         }
     }
 }
