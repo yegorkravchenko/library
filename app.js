@@ -25,12 +25,25 @@ function addBookToLibrary(name, author, pages) {
 }
 
 function toggleModal(state) {
+    const appearanceAnimation = [
+        { height: '0', opacity: '0' },
+        { height: '200px', opacity: '1' }
+    ];
+    const disappearanceAnimation = [
+        { height: '250px', opacity: '1'},
+        { height: '0', opacity: '0' }
+    ];
+
     if (!state) {
         isModalActive = true;
         newBookModal.style.display = 'flex';
+        newBookModal.animate(appearanceAnimation, {
+            duration: 150
+        });
     } else {
         isModalActive = false;
-        newBookModal.style.display = 'none';
+        newBookModal.animate(disappearanceAnimation, { duration: 150 });
+        window.setTimeout(() => { newBookModal.style.display = 'none'; }, 150);
     }
 }
 
