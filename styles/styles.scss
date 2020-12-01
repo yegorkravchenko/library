@@ -187,3 +187,41 @@ $fonts: 'Inter', Arial, Helvetica, sans-serif;
         margin-right: 5px;
     }
 }
+
+@media screen and (max-width: 855px) {
+    .main {
+        &__wrapper {
+            justify-content: space-around;
+            grid-template-columns: 250px 250px;
+        }
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .main {
+        &__wrapper {
+            justify-content: center;
+            grid-template-columns: 250px;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .header {
+        padding-top: 50px;
+
+        &__add-btn {
+            font-size: 1.2rem;
+        }
+    }
+
+    .textbox {
+        &__title {
+            font-size: 1.8rem;
+        }
+    
+        &__subtitle {
+            font-size: 1.4rem;
+        }
+    }
+}
