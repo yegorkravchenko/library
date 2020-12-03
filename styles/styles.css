@@ -125,6 +125,7 @@
   -ms-grid-columns: 250px 250px 250px;
       grid-template-columns: 250px 250px 250px;
   row-gap: 50px;
+  margin-bottom: 50px;
 }
 
 .card {
