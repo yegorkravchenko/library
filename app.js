@@ -100,9 +100,16 @@ btnAdd.addEventListener('click', () => {
 
 const cardsContainerObserver = new MutationObserver(() => {
     const cardsCheckboxes = document.querySelectorAll('.checkbox__input');
+    const cardsDeleteBtns = document.querySelectorAll('.card__delete-btn');
 
     cardsCheckboxes.forEach(checkbox => checkbox.addEventListener('click', (e) => {
         toggleCheckbox(e.target);
+    }));
+
+    cardsDeleteBtns.forEach(btn => btn.addEventListener('click', (e) => {
+        const card = e.target.parentNode;
+        library.splice(card.dataset.index, 1);
+        renderCards();
     }));
 });
 
