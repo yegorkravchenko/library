@@ -47,6 +47,10 @@ function toggleModal(state) {
     }
 }
 
+function resetModal() {
+    newBookInputs.forEach(input => input.value = '');
+}
+
 function renderCards() {
     cardsContainer.innerHTML = '';
     library.forEach((book, index) => {
@@ -90,6 +94,7 @@ newBookBtn.addEventListener('click', () => {
 btnAdd.addEventListener('click', () => {
     toggleModal(isModalActive);
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, false);
+    resetModal();
     renderCards();
 });
 
