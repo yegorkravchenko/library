@@ -135,10 +135,18 @@
   position: relative;
 }
 
+.card--active {
+  border: 2px solid #242486 !important;
+}
+
 .card__header {
   background-color: #757575;
   color: #fff;
   padding: 15px 15px;
+}
+
+.card__header--active {
+  background-color: #242486;
 }
 
 .card__book-title {
@@ -164,6 +172,10 @@
   left: 15px;
 }
 
+.card__pages--active {
+  color: #242486;
+}
+
 .card__delete-btn {
   color: #757575;
   cursor: pointer;
@@ -172,6 +184,10 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
+}
+
+.card__delete-btn--active {
+  color: #242486;
 }
 
 .checkbox {

@@ -137,11 +137,19 @@ $fonts: 'Inter', Arial, Helvetica, sans-serif;
     height: 250px;
     width: 250px;
     position: relative;
+    
+    &--active {
+        border: 2px solid $main-color !important;
+    }
 
     &__header {
         background-color: $notactive-color;
         color: #fff;
         padding: 15px 15px;
+
+        &--active {
+            background-color: $main-color;
+        }
     }
 
     &__book-title {
@@ -165,6 +173,10 @@ $fonts: 'Inter', Arial, Helvetica, sans-serif;
         position: absolute;
         bottom: 15px;
         left: 15px;
+
+        &--active {
+            color: $main-color;
+        }
     }
 
     &__delete-btn {
@@ -175,6 +187,10 @@ $fonts: 'Inter', Arial, Helvetica, sans-serif;
         position: absolute;
         bottom: 15px;
         right: 15px;
+
+        &--active {
+            color: $main-color;
+        }
     }
 }
 
