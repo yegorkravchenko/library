@@ -20,8 +20,8 @@ Book.prototype = {
 
 };
 
-function addBookToLibrary(name, author, pages) {
-    library.push(new Book(name, author, pages));
+function addBookToLibrary(name, author, pages, hasRead) {
+    library.push(new Book(name, author, pages, hasRead));
 }
 
 function toggleModal(state) {
@@ -49,20 +49,38 @@ function toggleModal(state) {
 
 function renderCards() {
     cardsContainer.innerHTML = '';
-    library.forEach(book => {
+    library.forEach((book, index) => {
         const card = document.createElement('div');
         card.setAttribute('class', 'card');
+        card.setAttribute('data-index', index);
         card.innerHTML = `
             <div class="card__header">
                 <h2 class="card__book-title">${book.name}</h2>
                 <h3 class="card__book-author">${book.author}</h3>
                 <label class="card__checkbox checkbox"><input type="checkbox" class="checkbox__input"> Read</label>
             </div>
-            <p class="card__pages">${book.pages}</p>
+            <p class="card__pages">${book.pages} pages</p>
             <p class="card__delete-btn">x</p>
         `;
         cardsContainer.appendChild(card);
     });
+}
+
+function toggleCheckbox(el) {
+    const card = el.parentNode.parentNode.parentNode;
+    const elementsToChange = [card, card.childNodes[1], card.childNodes[3], card.childNodes[5]];
+    
+    if (el.checked) {
+        elementsToChange.forEach(element => {
+            element.classList.add(`${element.classList[0]}--active`);
+        });
+        library[card.dataset.index].hasRead = true;
+    } else {
+        elementsToChange.forEach(element => {
+            element.classList.remove(`${element.classList[0]}--active`);
+        });
+        library[card.dataset.index].hasRead = false;
+    }
 }
 
 newBookBtn.addEventListener('click', () => {
@@ -71,6 +89,16 @@ newBookBtn.addEventListener('click', () => {
 
 btnAdd.addEventListener('click', () => {
     toggleModal(isModalActive);
-    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value);
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, false);
     renderCards();
 });
+
+const cardsContainerObserver = new MutationObserver(() => {
+    const cardsCheckboxes = document.querySelectorAll('.checkbox__input');
+
+    cardsCheckboxes.forEach(checkbox => checkbox.addEventListener('click', (e) => {
+        toggleCheckbox(e.target);
+    }));
+});
+
+cardsContainerObserver.observe(cardsContainer, { childList: true });
