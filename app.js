@@ -66,24 +66,32 @@ function renderCards() {
             <p class="card__pages">${book.pages} pages</p>
             <p class="card__delete-btn">x</p>
         `;
+        
+        if (book.hasRead) {
+            toggleCheckbox(card);
+        }
+
         cardsContainer.appendChild(card);
     });
 }
 
-function toggleCheckbox(el) {
-    const card = el.parentNode.parentNode.parentNode;
+function toggleCheckbox(card) {
+    // const card = el.parentNode.parentNode.parentNode;
     const elementsToChange = [card, card.childNodes[1], card.childNodes[3], card.childNodes[5]];
+    const checkbox = card.childNodes[1].childNodes[5].childNodes[0];
     
-    if (el.checked) {
+    if (checkbox.checked) {
         elementsToChange.forEach(element => {
             element.classList.add(`${element.classList[0]}--active`);
         });
         library[card.dataset.index].hasRead = true;
+        checkbox.checked = true;
     } else {
         elementsToChange.forEach(element => {
             element.classList.remove(`${element.classList[0]}--active`);
         });
         library[card.dataset.index].hasRead = false;
+        checkbox.checked = false;
     }
 
     updateStorage();
@@ -110,7 +118,7 @@ const cardsContainerObserver = new MutationObserver(() => {
     const cardsDeleteBtns = document.querySelectorAll('.card__delete-btn');
 
     cardsCheckboxes.forEach(checkbox => checkbox.addEventListener('click', (e) => {
-        toggleCheckbox(e.target);
+        toggleCheckbox(e.target.parentNode.parentNode.parentNode);
     }));
 
     cardsDeleteBtns.forEach(btn => btn.addEventListener('click', (e) => {
