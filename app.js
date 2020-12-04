@@ -55,35 +55,53 @@ function renderCards() {
     cardsContainer.innerHTML = '';
     library.forEach((book, index) => {
         const card = document.createElement('div');
-        card.setAttribute('class', 'card');
         card.setAttribute('data-index', index);
-        card.innerHTML = `
-            <div class="card__header">
-                <h2 class="card__book-title">${book.name}</h2>
-                <h3 class="card__book-author">${book.author}</h3>
-                <label class="card__checkbox checkbox"><input type="checkbox" class="checkbox__input"> Read</label>
-            </div>
-            <p class="card__pages">${book.pages} pages</p>
-            <p class="card__delete-btn">x</p>
-        `;
+
+        if (book.hasRead) {
+            card.setAttribute('class', 'card card--active');
+            card.innerHTML = `
+                <div class="card__header card__header--active">
+                    <h2 class="card__book-title card__book-title">${book.name}</h2>
+                    <h3 class="card__book-author">${book.author}</h3>
+                    <label class="card__checkbox checkbox"><input type="checkbox" class="checkbox__input"> Read</label>
+                </div>
+                <p class="card__pages card__pages--active">${book.pages} pages</p>
+                <p class="card__delete-btn card__delete-btn--active">x</p>
+            `;
+            card.childNodes[1].childNodes[5].childNodes[0].checked = true;
+        } else {
+            card.setAttribute('class', 'card');
+            card.innerHTML = `
+                <div class="card__header">
+                    <h2 class="card__book-title">${book.name}</h2>
+                    <h3 class="card__book-author">${book.author}</h3>
+                    <label class="card__checkbox checkbox"><input type="checkbox" class="checkbox__input"> Read</label>
+                </div>
+                <p class="card__pages">${book.pages} pages</p>
+                <p class="card__delete-btn">x</p>
+            `;
+        }
+
         cardsContainer.appendChild(card);
     });
 }
 
-function toggleCheckbox(el) {
-    const card = el.parentNode.parentNode.parentNode;
+function toggleCheckbox(card) {
     const elementsToChange = [card, card.childNodes[1], card.childNodes[3], card.childNodes[5]];
+    const checkbox = card.childNodes[1].childNodes[5].childNodes[0];
     
-    if (el.checked) {
+    if (checkbox.checked) {
         elementsToChange.forEach(element => {
             element.classList.add(`${element.classList[0]}--active`);
         });
         library[card.dataset.index].hasRead = true;
+        checkbox.checked = true;
     } else {
         elementsToChange.forEach(element => {
             element.classList.remove(`${element.classList[0]}--active`);
         });
         library[card.dataset.index].hasRead = false;
+        checkbox.checked = false;
     }
 
     updateStorage();
@@ -110,7 +128,7 @@ const cardsContainerObserver = new MutationObserver(() => {
     const cardsDeleteBtns = document.querySelectorAll('.card__delete-btn');
 
     cardsCheckboxes.forEach(checkbox => checkbox.addEventListener('click', (e) => {
-        toggleCheckbox(e.target);
+        toggleCheckbox(e.target.parentNode.parentNode.parentNode);
     }));
 
     cardsDeleteBtns.forEach(btn => btn.addEventListener('click', (e) => {
