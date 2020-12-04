@@ -85,6 +85,12 @@ function toggleCheckbox(el) {
         });
         library[card.dataset.index].hasRead = false;
     }
+
+    updateStorage();
+}
+
+function updateStorage() {
+    localStorage.setItem('library', JSON.stringify(library));
 }
 
 newBookBtn.addEventListener('click', () => {
@@ -95,6 +101,7 @@ btnAdd.addEventListener('click', () => {
     toggleModal(isModalActive);
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, false);
     resetModal();
+    updateStorage();
     renderCards();
 });
 
@@ -109,8 +116,16 @@ const cardsContainerObserver = new MutationObserver(() => {
     cardsDeleteBtns.forEach(btn => btn.addEventListener('click', (e) => {
         const card = e.target.parentNode;
         library.splice(card.dataset.index, 1);
+        updateStorage();
         renderCards();
     }));
 });
 
 cardsContainerObserver.observe(cardsContainer, { childList: true });
+
+window.addEventListener('load', () => {
+   if (localStorage.getItem('library')) {
+       JSON.parse(localStorage.getItem('library')).forEach(obj => library.push(obj));
+       renderCards();
+   }
+});
