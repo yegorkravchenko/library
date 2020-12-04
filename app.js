@@ -87,7 +87,6 @@ function renderCards() {
 }
 
 function toggleCheckbox(card) {
-    // const card = el.parentNode.parentNode.parentNode;
     const elementsToChange = [card, card.childNodes[1], card.childNodes[3], card.childNodes[5]];
     const checkbox = card.childNodes[1].childNodes[5].childNodes[0];
     
