@@ -15,3 +15,8 @@ A web page to keep track of the books you are reading/want to read.
 ## License
 
 [**MIT License**](LICENSE)
+
+***
+
+Started 1/12/20\
+Completed 4/12/20
